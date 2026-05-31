@@ -34,7 +34,6 @@
     .masthead {
       background: linear-gradient(135deg, #0a0a12 0%, #13102a 50%, #0a0a12 100%);
       border-bottom: 1px solid var(--dark-border);
-      padding: 0;
     }
 
     .masthead-inner {
@@ -45,7 +44,6 @@
     }
 
     .masthead-eyebrow {
-      font-family: 'Inter', sans-serif;
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.2em;
@@ -60,15 +58,11 @@
       font-weight: 900;
       color: #fff;
       line-height: 1.1;
-      letter-spacing: -0.01em;
     }
 
-    .masthead-title .diamond {
-      color: var(--gold);
-    }
+    .masthead-title .diamond { color: var(--gold); }
 
     .masthead-tagline {
-      font-family: 'Inter', sans-serif;
       font-size: 13px;
       font-weight: 300;
       letter-spacing: 0.15em;
@@ -90,12 +84,9 @@
       letter-spacing: 0.05em;
     }
 
-    .masthead-meta span {
-      color: var(--gold);
-      font-weight: 500;
-    }
+    .masthead-meta span { color: var(--gold); font-weight: 500; }
 
-    /* ── NAV BAR ── */
+    /* ── NAV ── */
     .nav-bar {
       background: var(--dark-card);
       border-bottom: 1px solid var(--dark-border);
@@ -106,7 +97,6 @@
       max-width: 900px;
       margin: 0 auto;
       display: flex;
-      gap: 0;
       overflow-x: auto;
       scrollbar-width: none;
     }
@@ -121,16 +111,15 @@
       color: var(--text-muted);
       padding: 14px 18px;
       white-space: nowrap;
-      cursor: pointer;
+      text-decoration: none;
       border-bottom: 2px solid transparent;
       transition: color 0.2s, border-color 0.2s;
-      text-decoration: none;
     }
 
     .nav-item:hover { color: var(--text); }
     .nav-item.active { color: var(--gold); border-bottom-color: var(--gold); }
 
-    /* ── MAIN LAYOUT ── */
+    /* ── LAYOUT ── */
     .container {
       max-width: 900px;
       margin: 0 auto;
@@ -143,7 +132,10 @@
       align-items: center;
       gap: 12px;
       margin-bottom: 24px;
+      margin-top: 48px;
     }
+
+    .section-header:first-child { margin-top: 0; }
 
     .section-label {
       font-size: 11px;
@@ -152,6 +144,7 @@
       text-transform: uppercase;
       padding: 4px 10px;
       border-radius: 3px;
+      white-space: nowrap;
     }
 
     .section-label.must-read {
@@ -172,24 +165,35 @@
       background: var(--dark-border);
     }
 
-    /* ── LEAD STORY ── */
-    .lead-story {
+    /* ── STORY CARD ── */
+    .story-card {
       background: var(--dark-card);
       border: 1px solid var(--dark-border);
-      border-left: 3px solid var(--must-read);
       border-radius: 8px;
       padding: 32px;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
       position: relative;
       overflow: hidden;
     }
 
-    .lead-story::before {
+    .story-card.accent-red  { border-left: 3px solid var(--must-read); }
+    .story-card.accent-gold { border-left: 3px solid var(--gold); }
+
+    .story-card.accent-red::before {
       content: '';
       position: absolute;
       top: 0; right: 0;
       width: 200px; height: 200px;
-      background: radial-gradient(circle at top right, rgba(232, 74, 95, 0.06), transparent 70%);
+      background: radial-gradient(circle at top right, rgba(232,74,95,0.06), transparent 70%);
+      pointer-events: none;
+    }
+
+    .story-card.accent-gold::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle at top right, rgba(201,168,76,0.06), transparent 70%);
       pointer-events: none;
     }
 
@@ -198,13 +202,15 @@
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--must-read);
       margin-bottom: 12px;
     }
 
+    .story-category.red  { color: var(--must-read); }
+    .story-category.gold { color: var(--gold); }
+
     .story-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
       font-weight: 700;
       color: #fff;
       line-height: 1.3;
@@ -218,10 +224,7 @@
       margin-bottom: 20px;
     }
 
-    .story-deck strong {
-      color: var(--text);
-      font-weight: 500;
-    }
+    .story-deck strong { color: var(--text); font-weight: 500; }
 
     .story-highlights {
       background: rgba(255,255,255,0.03);
@@ -244,7 +247,7 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 9px;
     }
 
     .story-highlights li {
@@ -272,22 +275,13 @@
       gap: 12px;
     }
 
-    .story-byline {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .story-byline strong {
-      color: var(--text);
-    }
+    .story-byline { font-size: 12px; color: var(--text-muted); }
+    .story-byline strong { color: var(--text); }
 
     .read-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(232, 74, 95, 0.1);
-      border: 1px solid rgba(232, 74, 95, 0.3);
-      color: var(--must-read);
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.05em;
@@ -297,68 +291,29 @@
       transition: background 0.2s, border-color 0.2s;
     }
 
-    .read-link:hover {
-      background: rgba(232, 74, 95, 0.2);
-      border-color: rgba(232, 74, 95, 0.5);
+    .read-link.red {
+      background: rgba(232,74,95,0.1);
+      border: 1px solid rgba(232,74,95,0.3);
+      color: var(--must-read);
+    }
+
+    .read-link.red:hover {
+      background: rgba(232,74,95,0.2);
+      border-color: rgba(232,74,95,0.5);
+    }
+
+    .read-link.gold {
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold);
+    }
+
+    .read-link.gold:hover {
+      background: rgba(201,168,76,0.2);
+      border-color: rgba(201,168,76,0.5);
     }
 
     .read-link::after { content: ' →'; }
-
-    /* ── BRIEFING ITEMS ── */
-    .briefing-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 48px;
-    }
-
-    .briefing-item {
-      background: var(--dark-card);
-      border: 1px solid var(--dark-border);
-      border-radius: 6px;
-      padding: 20px 24px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      transition: border-color 0.2s;
-    }
-
-    .briefing-item:hover { border-color: #2a2a42; }
-
-    .briefing-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 900;
-      color: var(--dark-border);
-      line-height: 1;
-      min-width: 28px;
-      padding-top: 2px;
-    }
-
-    .briefing-content {}
-
-    .briefing-source {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent-blue);
-      margin-bottom: 6px;
-    }
-
-    .briefing-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 6px;
-      line-height: 1.4;
-    }
-
-    .briefing-blurb {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
 
     /* ── DUPREE'S TAKE ── */
     .duprees-take {
@@ -366,7 +321,7 @@
       border: 1px solid #2a2040;
       border-radius: 8px;
       padding: 28px 32px;
-      margin-bottom: 48px;
+      margin-bottom: 8px;
       position: relative;
     }
 
@@ -377,8 +332,7 @@
       color: var(--gold);
       opacity: 0.15;
       position: absolute;
-      top: 8px;
-      left: 20px;
+      top: 8px; left: 20px;
       line-height: 1;
     }
 
@@ -405,6 +359,65 @@
       font-weight: 500;
     }
 
+    /* ── BRIEFING ITEMS ── */
+    .briefing-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .briefing-item {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 6px;
+      padding: 20px 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+
+    .briefing-item:hover { border-color: #2a2a42; }
+
+    .briefing-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--dark-border);
+      line-height: 1;
+      min-width: 28px;
+      padding-top: 2px;
+    }
+
+    .briefing-source {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-blue);
+      margin-bottom: 6px;
+    }
+
+    .briefing-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .briefing-blurb {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .briefing-blurb a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-size: 12px;
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--dark-card);
@@ -413,10 +426,7 @@
       text-align: center;
     }
 
-    .footer-inner {
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    .footer-inner { max-width: 900px; margin: 0 auto; }
 
     .footer-title {
       font-family: 'Playfair Display', serif;
@@ -425,11 +435,7 @@
       margin-bottom: 8px;
     }
 
-    .footer-text {
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
+    .footer-text { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
 
     .footer-divider {
       width: 40px;
@@ -441,10 +447,9 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .masthead-inner { padding: 28px 20px 22px; }
-      .lead-story { padding: 24px 20px; }
+      .story-card { padding: 24px 20px; }
       .story-footer { flex-direction: column; align-items: flex-start; }
       .briefing-item { flex-direction: column; gap: 8px; }
-      .briefing-num { font-size: 1.1rem; }
       .duprees-take { padding: 22px 20px; }
     }
   </style>
@@ -478,28 +483,28 @@
   <!-- MAIN -->
   <main class="container">
 
-    <!-- MUST READ SECTION -->
+    <!-- ══ MUST READ ══ -->
     <div class="section-header">
       <span class="section-label must-read">◆ Must Read</span>
       <div class="section-line"></div>
     </div>
 
-    <!-- LEAD STORY -->
-    <article class="lead-story">
-      <div class="story-category">Business Integration &amp; Application</div>
+    <!-- STORY 1 — Sherlocking -->
+    <article class="story-card accent-red">
+      <div class="story-category red">Business Integration &amp; Application</div>
       <h2 class="story-title">AI Founders Are About to Get Sherlocked — and Most Don't See It Coming</h2>
       <p class="story-deck">
-        Matt Rogers co-founded Nest, worked directly under Steve Jobs, and watched Apple kill startup after startup with a single OS update. He's now sounding the alarm for AI founders: <strong>the same thing is happening again, right now.</strong> The companies that survive won't be the ones with the best models — they'll be the ones that become operationally indispensable.
+        Matt Rogers co-founded Nest, worked directly under Steve Jobs, and watched Apple kill startup after startup with a single OS update. He's sounding the alarm for AI founders: <strong>the same pattern is repeating right now.</strong> The companies that survive won't have the best models — they'll be the ones that become operationally indispensable.
       </p>
 
       <div class="story-highlights">
         <h4>Key Takeaways</h4>
         <ul>
-          <li>Apple's "Sherlocking" — absorbing startups into the OS overnight — is now being replicated by OpenAI, Anthropic, and Google with every model release.</li>
-          <li>Products built as "model wrappers" or generic copilots are the most vulnerable. They're small enough to bundle and lack the network effects to survive.</li>
-          <li>Dropbox, Spotify, and 1Password all survived platform attacks by going <em>deeper</em> — not by competing feature-for-feature, but by becoming embedded in operations.</li>
-          <li>The frontier labs can build extraordinary foundation models — but they can't provide white-glove implementation for every hospital, law firm, and manufacturer on earth. <strong>That gap is the opportunity.</strong></li>
-          <li>The moat is operational integration: approvals, compliance, procurement, institutional knowledge. Once you're in, you're painful to remove.</li>
+          <li>Apple's "Sherlocking" — absorbing startups into the OS overnight — is now being replicated by OpenAI, Anthropic, and Google with every major model release.</li>
+          <li>Products built as model wrappers or generic copilots are the most vulnerable. Small enough to bundle, no network effects to protect them.</li>
+          <li>Dropbox, Spotify, and 1Password all survived platform attacks by going <em>deeper</em> — becoming embedded in operations rather than competing feature-for-feature.</li>
+          <li>The frontier labs can build extraordinary foundation models — but they can't provide white-glove implementation for every hospital, law firm, and manufacturer on earth. <strong>That gap is the real opportunity.</strong></li>
+          <li>The moat is operational integration: approvals, compliance, procurement, institutional knowledge. Once you're embedded, you're painful to remove.</li>
         </ul>
       </div>
 
@@ -507,7 +512,34 @@
         <div class="story-byline">
           By <strong>Matt Rogers</strong> (Co-founder, Nest &amp; Mill) &nbsp;·&nbsp; <strong>Fortune</strong> &nbsp;·&nbsp; May 30, 2026
         </div>
-        <a class="read-link" href="https://fortune.com/2026/05/30/matt-rogers-nest-apple-sherlocking-ai-founders-hyperscalers/" target="_blank" rel="noopener">Read Full Story</a>
+        <a class="read-link red" href="https://fortune.com/2026/05/30/matt-rogers-nest-apple-sherlocking-ai-founders-hyperscalers/" target="_blank" rel="noopener">Read Full Story</a>
+      </div>
+    </article>
+
+    <!-- STORY 2 — Databricks -->
+    <article class="story-card accent-gold">
+      <div class="story-category gold">Business Integration &amp; Application</div>
+      <h2 class="story-title">Why Databricks Is Worth $134 Billion — And What It Tells Us About the AI Infrastructure Race</h2>
+      <p class="story-deck">
+        Databricks just closed a <strong>$7B+ funding round at a $134 billion valuation</strong> — one of the largest in private company history — and is heading toward what may be the defining IPO of the AI era. The reason? It solves the problem every enterprise faces but rarely talks about: <strong>their data is a mess, and AI is completely useless without clean, accessible data.</strong>
+      </p>
+
+      <div class="story-highlights">
+        <h4>Why This Matters</h4>
+        <ul>
+          <li>Databricks built the "data lakehouse" — a unified platform that makes enterprise data actually usable for AI. No clean data, no working AI. That's the bottleneck every large company hits.</li>
+          <li><strong>$5.4B ARR growing 65% year-over-year.</strong> In a market full of hype, those are real numbers earned from real operational dependency.</li>
+          <li>IPO expected second half of 2026 — likely to be a benchmark valuation event for the entire AI infrastructure sector.</li>
+          <li>This is a textbook case of the Sherlocking survival playbook in action: don't compete with the models, become the essential layer underneath them.</li>
+          <li>Every enterprise that signs with Databricks is essentially locked in — their data architecture, pipelines, and workflows all run through it. That's the moat.</li>
+        </ul>
+      </div>
+
+      <div class="story-footer">
+        <div class="story-byline">
+          By <strong>David H. Freedman</strong> &nbsp;·&nbsp; <strong>Inc.</strong> &nbsp;·&nbsp; May 2026
+        </div>
+        <a class="read-link gold" href="https://www.inc.com/david-h-freedman/databricks-took-the-lead-racing-toward-a-massive-ipo/91340390" target="_blank" rel="noopener">Read Full Story</a>
       </div>
     </article>
 
@@ -515,12 +547,12 @@
     <div class="duprees-take">
       <div class="take-label">🎸 Dupree's Take</div>
       <p class="take-text">
-        Rogers is describing exactly why personal AI is the most defensible position in this entire market. A Muse that knows your life, your relationships, your history, and your preferences cannot be "Sherlocked" — because it can't be replicated at scale. The hyperscalers build wide. We build deep. That asymmetry is the whole game.
+        Read these two stories together and a clear picture emerges: the AI winners of this decade won't be the ones with the best models — they'll be the ones who own the layer that everything else runs on top of. Databricks owns the data layer. The companies Rogers describes own the workflow layer. The frontier labs own the intelligence layer. The question for every AI builder right now is: <em>which layer are you in, and how deep can you go?</em>
       </p>
       <div class="take-sig">— Dupree ◆</div>
     </div>
 
-    <!-- TODAY'S BRIEFING -->
+    <!-- ══ TODAY'S BRIEF ══ -->
     <div class="section-header">
       <span class="section-label briefing">Today's Brief</span>
       <div class="section-line"></div>
@@ -530,36 +562,36 @@
 
       <div class="briefing-item">
         <div class="briefing-num">01</div>
-        <div class="briefing-content">
+        <div>
           <div class="briefing-source">PCWorld</div>
-          <div class="briefing-title">Google's Gemini "Daily Brief" Is the Only I/O Feature That Actually Matters</div>
+          <div class="briefing-title">Google's Gemini "Daily Brief" Is the Only I/O Feature That Actually Changed How I Work</div>
           <p class="briefing-blurb">
-            Scanning Gmail, Calendar, and recent chats, Gemini's Daily Brief delivers a personalized morning to-do list with action buttons. The writer calls it "an AI feature done right" — and the only announcement from Google I/O week that changed how he works.
-            &nbsp;<a href="https://www.pcworld.com/article/3150841/googles-best-new-ai-feature-is-just-a-really-good-to-do-list.html" target="_blank" rel="noopener" style="color: var(--accent-blue); text-decoration: none; font-size:12px;">Read →</a>
+            Scans Gmail, Calendar, and recent chats to generate a personalized morning to-do list with action buttons. The writer calls it the one announcement from all of Google I/O that genuinely made a daily difference.
+            &nbsp;<a href="https://www.pcworld.com/article/3150841/googles-best-new-ai-feature-is-just-a-really-good-to-do-list.html" target="_blank" rel="noopener">Read →</a>
           </p>
         </div>
       </div>
 
       <div class="briefing-item">
         <div class="briefing-num">02</div>
-        <div class="briefing-content">
+        <div>
           <div class="briefing-source">TechCrunch</div>
-          <div class="briefing-title">RSI Is the New AGI — and It's Just as Hard to Pin Down</div>
+          <div class="briefing-title">RSI Is the New AGI — Recursive Self-Improvement and Why It's Worrisome</div>
           <p class="briefing-blurb">
-            Recursive self-improvement (RSI) — an AI that continuously improves itself without humans in the loop — is the new buzzword replacing AGI in AI strategy conversations. Worth watching closely.
-            &nbsp;<a href="https://techcrunch.com/2026/05/28/rsi-is-the-new-agi-and-its-just-as-hard-to-pin-down/" target="_blank" rel="noopener" style="color: var(--accent-blue); text-decoration: none; font-size:12px;">Read →</a>
+            Recursive self-improvement (RSI) — an AI that autonomously and continuously improves itself without humans in the loop — is replacing AGI as the benchmark concept in AI strategy conversations. The implications are significant.
+            &nbsp;<a href="https://techcrunch.com/2026/05/28/rsi-is-the-new-agi-and-its-just-as-hard-to-pin-down/" target="_blank" rel="noopener">Read →</a>
           </p>
         </div>
       </div>
 
       <div class="briefing-item">
         <div class="briefing-num">03</div>
-        <div class="briefing-content">
+        <div>
           <div class="briefing-source">Bloomberg</div>
-          <div class="briefing-title">Apple's Long-Promised "Siri Pro" AI Upgrade Is Finally Happening</div>
+          <div class="briefing-title">Apple's Long-Promised "Siri Pro" Is Finally Arriving in iOS 27</div>
           <p class="briefing-blurb">
-            iOS 27 reportedly brings a dramatically upgraded Siri with personal data access, on-screen analysis, calendar integration, app launching, and web search. Apple is finally entering the personal AI race in earnest.
-            &nbsp;<a href="https://www.bloomberg.com/news/features/2026-05-28/apple-ios-27-photos-screenshots-revamped-siri-pro-camera-app-new-ai-features" target="_blank" rel="noopener" style="color: var(--accent-blue); text-decoration: none; font-size:12px;">Read →</a>
+            A dramatically upgraded Siri with personal data access, on-screen analysis, calendar integration, app launching, and web search. Apple is entering the personal AI race — finally, seriously.
+            &nbsp;<a href="https://www.bloomberg.com/news/features/2026-05-28/apple-ios-27-photos-screenshots-revamped-siri-pro-camera-app-new-ai-features" target="_blank" rel="noopener">Read →</a>
           </p>
         </div>
       </div>
